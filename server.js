@@ -101,16 +101,12 @@ app.post('/api/invest', async (req, res) => {
 
     const money = (() => {
       switch (req.body.amount.percent) {
-        case '4%':
-          return (req.body.amount.value * 4) / 100
-        case '6%':
-          return (req.body.amount.value * 6) / 100
-        case '8%':
-          return (req.body.amount.value * 6) / 100
-        case '10%':
-          return (req.body.amount.value * 10) / 100
-        case '15%':
-          return (req.body.amount.value * 15) / 100
+        case '14%':
+          return (req.body.amount.value * 14) / 100
+        case '28%':
+          return (req.body.amount.value * 28) / 100
+        case '35%':
+          return (req.body.amount.value * 35) / 100
       }
     })()
     console.log(money)
