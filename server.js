@@ -113,7 +113,7 @@ app.post('/api/invest', async (req, res) => {
           return (req.body.amount.value * 15) / 100
       }
     })()
-
+    console.log(money)
     const date = new Date()
     if (
       req.body.amount.value >= req.body.amount.min &&
