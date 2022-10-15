@@ -139,66 +139,6 @@ app.post('/api/invest', async (req, res) => {
         message: ' you entered an amount either less or beyond investmet range'
       })
     }
-    // if (user.funded > req.body.amount.value) {
-
-    //   if (
-    //     req.body.amount.value >= req.body.amount.min &&
-    //     req.body.amount.value <= req.body.amount.max
-    //   ) {
-    //     await User.updateOne(
-    //       { email: email },
-    //       { $set: { funded: user.funded - req.body.amount.value } }
-    //     )
-    //     const money = (() => {
-    //       switch (req.body.amount.percent) {
-    //         case '4%':
-    //           return (req.body.amount.value * 4) / 100
-    //         case '6%':
-    //           return (req.body.amount.value * 6) / 100
-    //         case '8%':
-    //           return (req.body.amount.value * 6) / 100
-    //         case '10%':
-    //           return (req.body.amount.value * 10) / 100
-    //         case '15%':
-    //           return (req.body.amount.value * 15) / 100
-    //       }
-    //     })()
-    //     const updateInvest = async () => {
-    //       await User.updateOne(
-    //         { email: email },
-    //         {
-    //           $set: {
-    //             investment: (user.investment = Math.floor(
-    //               req.body.amount.value + money
-    //             ))
-    //           }
-    //         }
-    //       )
-    //     }
-    //     updateInvest()
-    //     const updateFunded = async () => {
-    //       await User.updateOne(
-    //         { email: email},
-    //         { $set: { funded: user.funded + user.investment }}
-    //       )
-    //       await User.updateOne({ email: email }, { $set: { investment: 0 } })
-    //     }
-    //     const startTimer = () => {
-    //       const date = new Date()
-    //       const countDownDate = date.setTime(
-    //         date.getTime() + 10 * 1000
-    //       )
-    //     }
-    //     let period
-    //     startTimer()
-    //   } else {
-    //     res.json({
-    //       status: 'error',
-    //       message:
-    //         ' you entered an amount either less or beyond investmet range'
-    //     })
-    //   }
-    // }
   } catch (error) {
     res.json({ status: 'error' })
   }
