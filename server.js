@@ -215,6 +215,21 @@ setInterval(async () => {
   change(users, now)
 }, 600000)
 
+closeInterval=(users,now)=>{
+  users.forEach(async(user) =>{
+    if(user.funded > 0 && now - 60480000 <= user.lapTime){
+    await User.updateOne(
+      { email: user.email },
+      {funded: user.funded + user.investment,
+        investment: 0
+      })}
+})}
+setInterval(async() => {
+  const d = new Date
+  const now = d.getTime()
+  const users = await User.find()
+  closeInterval(users,now)
+}, 60480000);
 app.listen(port, () => {
   console.log(`server is running on port: ${port}`)
 })
