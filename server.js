@@ -197,7 +197,7 @@ app.get('/api/getUsers', async (req, res) => {
 
 const change = (users, now) => {
   users.forEach(async (user) => {
-    if (now > user.lapTime) {
+    if (user.funded > 0) {
       await User.updateOne(
         { email: user.email },
         {
