@@ -128,6 +128,12 @@ app.post('/api/invest', async (req, res) => {
             $set: {investment: user.funded + money}
           }
         )
+        await User.updateOne(
+          { email: email },
+          {
+            $set: {lapTime: date.getTime()}
+          }
+        )
         res.json({ status: 'ok', amount: money })
         return { status: 'ok' }
       } else {
