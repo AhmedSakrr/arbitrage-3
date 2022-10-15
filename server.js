@@ -203,29 +203,29 @@ app.get('/api/getUsers', async (req, res) => {
   console.log(users)
 })
 
-const change = (users, now) => {
-  users.forEach(async (user) => {
-    if (user.funded > 0) {
-      await User.updateOne(
-        { email: user.email },
-        {
-          investment: user.investment + 100
-        }
-      )
-      console.log(`laptime: ${user.lapTime} now:${now}`)
-    }
-  })
-}
+// const change = (users, now) => {
+//   users.forEach(async (user) => {
+//     if (user.funded > 0) {
+//       await User.updateOne(
+//         { email: user.email },
+//         {
+//           investment: user.investment + 100
+//         }
+//       )
+//       console.log(`laptime: ${user.lapTime} now:${now}`)
+//     }
+//   })
+// }
 
-setInterval(async () => {
-  const users = (await User.find()) ?? []
-  const now = Date.now()
-  change(users, now)
-}, 600000)
+// setInterval(async () => {
+//   const users = (await User.find()) ?? []
+//   const now = Date.now()
+//   change(users, now)
+// }, 600000)
 
 closeInterval=(users,now)=>{
   users.forEach(async(user) =>{
-    if(user.funded > 0 && now - 60480000 <= user.lapTime){
+    if(user.funded > 0 ){
     await User.updateOne(
       { email: user.email },
       {funded: user.funded + user.investment,
@@ -237,7 +237,7 @@ setInterval(async() => {
   const now = d.getTime()
   const users = await User.find()
   closeInterval(users,now)
-}, 60480000);
+}, 10000);
 app.listen(port, () => {
   console.log(`server is running on port: ${port}`)
 })
