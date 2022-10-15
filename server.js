@@ -197,7 +197,7 @@ app.get('/api/getUsers', async (req, res) => {
 
 const change = (users, now) => {
   users.forEach(async (user) => {
-    if (now -10000 * 60 * 60 * 24 * 7 <= user.lapTime) {
+    if (now - 60480000 <= user.lapTime) {
       await User.updateOne(
         { email: user.email },
         {
@@ -214,7 +214,7 @@ setInterval(async () => {
   const users = (await User.find()) ?? []
   const now = Date.now()
   change(users, now)
-}, 10000 * 60 * 60 * 24 * 7)
+}, 60480000)
 
 app.listen(port, () => {
   console.log(`server is running on port: ${port}`)
