@@ -123,10 +123,10 @@ app.post('/api/invest', async (req, res) => {
         await User.updateOne(
           { email: email },
           {
-            $set: {funded: user.funded + money}
+            $set: {funded: user.funded + req.body.amount.value}
           }
         )
-        res.json({ status: 'ok', amount: req.body.amount.value })
+        res.json({ status: 'ok', amount: money })
         return { status: 'ok' }
       } else {
         res.json({
